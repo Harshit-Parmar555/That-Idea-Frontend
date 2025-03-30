@@ -14,7 +14,7 @@ const Navbar = () => {
     }
   };
   return (
-    <div className="w-full h-16 bg-black flex items-center justify-between px-4 md:px-16 border-b-[1px] border-y-zinc-800 fixed">
+    <div className="w-full h-16 bg-white flex items-center justify-between px-4 md:px-16 border-b-[1px] border-zinc-200 fixed">
       <img src={logo} alt="" className="h-8 invert" />
       {user ? (
         <Link to="/profile">
@@ -25,8 +25,8 @@ const Navbar = () => {
               className="h-10 w-10 rounded-full object-cover"
             />
             <div>
-              <p className="text-sm font-[Inter] text-zinc-200">Hello</p>
-              <h1 className="text-base font-[Inter] text-zinc-200 font-semibold line-clamp-1">
+              <p className="text-sm font-[Inter] text-zinc-800">Hello</p>
+              <h1 className="text-base font-[Inter] text-black font-semibold line-clamp-1">
                 {user.username}
               </h1>
             </div>
@@ -35,7 +35,7 @@ const Navbar = () => {
       ) : (
         <Button
           onClick={handleSignup}
-          className="rounded-xs cursor-pointer bg-white text-black hover:bg-zinc-200"
+          className="rounded-sm cursor-pointer bg-[#0a0908] hover:bg-zinc-900"
         >
           Sign Up
         </Button>

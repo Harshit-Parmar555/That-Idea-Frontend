@@ -35,18 +35,18 @@ const Upload = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="max-w-lg w-full flex flex-col items-center gap-6 p-4"
       >
-        <h1 className="text-2xl font-[Inter] font-semibold text-zinc-200">
+        <h1 className="text-2xl font-[Inter] font-semibold text-black">
           Upload Your <span className="text-blue-600">Idea</span>
         </h1>
 
         {/* Name Field */}
         <div className="w-full flex flex-col gap-2">
-          <label className="block text-sm font-medium text-zinc-200 mb-1">
+          <label className="block text-sm font-medium text-zinc-800 mb-1">
             Idea Name
           </label>
           <Input
             placeholder="Enter Name Of Idea"
-            className="h-12 border border-zinc-600 text-zinc-200"
+            className="h-12 border border-zinc-600 text-zinc-800"
             {...register("name", {
               required: "Name is required",
               minLength: { value: 3, message: "Minimum 3 characters required" },
@@ -63,12 +63,12 @@ const Upload = () => {
 
         {/* Description Field */}
         <div className="w-full flex flex-col gap-2">
-          <label className="block text-sm font-medium text-zinc-200 mb-1">
+          <label className="block text-sm font-medium text-zinc-800 mb-1">
             Brief Description
           </label>
           <Textarea
             placeholder="Enter A Brief Description About Idea"
-            className="h-24 border border-zinc-600 text-zinc-200"
+            className="h-24 border border-zinc-600 text-zinc-800"
             {...register("description", {
               required: "Description is required",
               minLength: {
@@ -88,7 +88,7 @@ const Upload = () => {
 
         {/* Idea category field */}
         <div className="w-full flex flex-col gap-2">
-          <label className="block text-sm font-medium text-zinc-200 mb-1">
+          <label className="block text-sm font-medium text-zinc-800 mb-1">
             Idea Category
           </label>
           <Input
@@ -101,7 +101,7 @@ const Upload = () => {
               },
             })}
             placeholder="Enter Category of Idea"
-            className="h-12 border border-zinc-600 text-zinc-200"
+            className="h-12 border border-zinc-600 text-zinc-800"
           />
           {errors.category && (
             <p className="text-red-500 text-sm">{errors.category.message}</p>
@@ -110,13 +110,13 @@ const Upload = () => {
 
         {/* Cover Image Field */}
         <div className="w-full flex flex-col gap-2">
-          <label className="block text-sm font-medium text-zinc-200 mb-1">
+          <label className="block text-sm font-medium text-zinc-800 mb-1">
             Cover Image
           </label>
           <Input
             type="file"
             accept="image/*"
-            className="h-12 border border-zinc-600 text-zinc-200"
+            className="h-12 border border-zinc-600 text-zinc-800"
             {...register("coverImg", { required: "Cover image is required" })}
           />
           {errors.coverImg && (
@@ -126,12 +126,12 @@ const Upload = () => {
 
         {/* Pitch Field */}
         <div className="w-full flex flex-col gap-2">
-          <label className="block text-sm font-medium text-zinc-200 mb-1">
+          <label className="block text-sm font-medium text-zinc-800 mb-1">
             Detailed Pitch
           </label>
           <Textarea
             placeholder="Enter Your Detailed Pitch"
-            className="h-40 border border-zinc-600 text-zinc-200"
+            className="h-40 border border-zinc-600 text-zinc-800"
             {...register("pitch", {
               required: "Pitch is required",
               minLength: {

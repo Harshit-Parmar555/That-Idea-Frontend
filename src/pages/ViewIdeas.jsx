@@ -44,20 +44,20 @@ const Container = () => {
   return (
     <div className="w-[90%] flex flex-col items-center gap-6">
       {/* 🔹 Search Box */}
-      <div className="w-full sm:w-[80%] lg:w-[50%] h-14 flex items-center border rounded-md px-4 py-2 bg-zinc-950 shadow-sm mb-4 border-zinc-700">
+      <div className="w-full sm:w-[80%] lg:w-[50%] h-16 flex items-center border rounded-full px-4 py-2 bg-white shadow-sm mb-4 border-blue-200">
         <Input
           type="text"
           placeholder="Search . . . "
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full outline-none border-none text-lg font-[Inter] text-zinc-200"
+          className="w-full outline-none border-none shadow-none text-lg font-[Inter]  focus-visible:outline-none focus-visible:ring-0"
         />
         <Button
           onClick={handleSearch}
-          className="ml-3 bg-white text-black hover:bg-zinc-200 rounded-sm"
+          className="ml-3 bg-blue-600 hover:bg-blue-700 rounded-full"
         >
           <Search className="mr-1" size={18} />
-          Search
+          {searching ? "Searching" : "Search"}
         </Button>
       </div>
 

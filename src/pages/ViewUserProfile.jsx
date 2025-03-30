@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import IdeaBox from "@/custom/IdeaBox";
 import { ViewUserSkeleton } from "@/custom/Skeleton";
 import { IdeaStore } from "@/store/useIdeaStore";
@@ -9,7 +9,7 @@ const ViewUserProfile = () => {
   const { loadingViewUser, viewUserIdeas, viewUser, loadViewUser } =
     IdeaStore();
   const { id } = useParams();
-  const [loading, setloading] = useState(true);
+
   useEffect(() => {
     loadViewUser(id);
   }, []);
@@ -40,10 +40,10 @@ const UserDetail = ({ user }) => {
             className="h-16 w-16 object-cover rounded-full border-2 border-gray-300 shadow-md "
           />
           <div>
-            <h1 className="text-2xl font-[Poppins] font-semibold text-gray-200">
+            <h1 className="text-2xl font-[Poppins] font-semibold text-black">
               {user?.username}
             </h1>
-            <p className="font-[Inter] text-sm text-gray-400">{user?.email}</p>
+            <p className="font-[Inter] text-sm text-gray-800">{user?.email}</p>
           </div>
         </div>
         <div className="flex flex-col items-center gap-4">
@@ -62,7 +62,7 @@ const UserDetail = ({ user }) => {
 const UserIdeas = ({ ideas }) => {
   return (
     <div className="w-full flex flex-col items-center mt-12 mb-4">
-      <h1 className="text-2xl font-[Poppins] font-semibold text-zinc-200">
+      <h1 className="text-2xl font-[Poppins] font-semibold text-zinc-800">
         User Ideas
       </h1>
       <div className="w-[90%] flex flex-wrap justify-center gap-6 mt-6">

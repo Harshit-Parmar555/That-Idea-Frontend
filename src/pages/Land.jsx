@@ -6,12 +6,12 @@ import { Link } from "react-router-dom";
 const Land = () => {
   return (
     <div className="w-full h-[90vh] lg:h-auto overflow-hidden px-4 md:px-8 flex items-center justify-center">
-      <div className="w-full flex flex-col items-center gap-6 text-center lg:mt-48">
-        <Button className="bg-transparent hover:bg-transparent rounded-2xl border border-zinc-800 px-4 py-3 text-xs md:text-base">
+      <div className="w-full flex flex-col items-center gap-6 text-center lg:mt-44">
+        <Button className="bg-transparent hover:bg-transparent rounded-2xl border border-zinc-200 text-black px-4 py-3 text-xs md:text-base">
           ✨ Welcome To Start-X <ArrowRight className="ml-2" />
         </Button>
 
-        <h1 className="w-full text-transparent bg-clip-text bg-gradient-to-r from-zinc-400 to-white font-[Poppins] text-4xl md:text-6xl lg:text-7xl font-bold">
+        <h1 className="w-full text-[#0a0908] font-[Poppins] text-4xl md:text-6xl lg:text-7xl font-bold">
           Turn Ideas into Reality
         </h1>
 
@@ -23,7 +23,7 @@ const Land = () => {
 
         <div className="flex gap-4 md:gap-8">
           <Link to="view-ideas">
-            <Button className="rounded-md py-6 px-8 text-sm md:text-base font-[Inter] cursor-pointer bg-white text-black hover:bg-zinc-200">
+            <Button className="rounded-md py-6 px-8 text-sm md:text-base font-[Inter] cursor-pointer bg-blue-600 text-white hover:bg-blue-500">
               Read Ideas!
             </Button>
           </Link>
@@ -39,7 +39,7 @@ const Land = () => {
           </a>
         </div>
 
-        <h1 className="text-xs md:text-sm font-[Inter] mt-4 text-white text-center">
+        <h1 className="text-xs md:text-sm font-[Inter] mt-4 text-[#22333b] text-center">
           Made With ❤️ | <span className="font-semibold">HARSHIT X CODES</span>
         </h1>
       </div>

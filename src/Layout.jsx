@@ -4,7 +4,7 @@ import Navbar from "./custom/Navbar";
 
 const Layout = () => {
   return (
-    <div className="w-full min-h-screen max-h-auto flex flex-col bg-black">
+    <div className="w-full min-h-screen max-h-auto flex flex-col bg-white">
       <Navbar />
       <Outlet />
     </div>

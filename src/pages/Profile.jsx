@@ -41,15 +41,15 @@ const ProfileCard = ({ user, logout }) => {
       />
       <div className="flex flex-col text-center gap-4 w-full sm:w-auto">
         <div>
-          <h1 className="text-2xl font-[Poppins] font-semibold text-zinc-200">
+          <h1 className="text-2xl font-[Poppins] font-semibold text-black">
             Hello, {user.username}
           </h1>
-          <p className="font-[Inter] text-sm text-zinc-200 font-semibold">
+          <p className="font-[Inter] text-sm text-zinc-800 font-semibold">
             {user.email}
           </p>
         </div>
         <Link to="/upload" className="w-full">
-          <Button className="w-full bg-white text-black hover:bg-zinc-200">
+          <Button className="w-full bg-blue-600 hover:bg-blue-500">
             Add Idea
           </Button>
         </Link>
@@ -65,7 +65,7 @@ const ProfileCard = ({ user, logout }) => {
 const YourIdeas = ({ ideas }) => {
   return (
     <div className="w-full flex flex-col items-center mt-12 mb-4">
-      <h1 className="text-2xl font-[Poppins] font-semibold text-zinc-200">
+      <h1 className="text-2xl font-[Poppins] font-semibold text-zinc-800">
         Your Ideas
       </h1>
       <div className="w-[90%] flex flex-wrap justify-center gap-6 mt-6">
