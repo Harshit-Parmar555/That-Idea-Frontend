@@ -10,6 +10,7 @@ export const AuthStore = create((set, get) => ({
   signing: false,
   loggingout: false,
 
+  // Signup
   signup: async () => {
     try {
       set({ signing: true });
@@ -33,6 +34,7 @@ export const AuthStore = create((set, get) => ({
     }
   },
 
+  // CheckAuth
   checkAuth: async () => {
     try {
       set({ checkingAuth: true });
@@ -50,6 +52,7 @@ export const AuthStore = create((set, get) => ({
     }
   },
 
+  // Logout
   logout: async () => {
     try {
       set({ loggingout: true });

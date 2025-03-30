@@ -16,6 +16,7 @@ export const IdeaStore = create((set, get) => ({
   deleting: false,
   searching: false,
 
+  // Load ideas
   loadIdeas: async () => {
     try {
       set({ loadingIdeas: true });
@@ -28,6 +29,7 @@ export const IdeaStore = create((set, get) => ({
     }
   },
 
+  // Load view ideas
   loadViewIdea: async (id) => {
     try {
       set({ loadingViewIdea: true });
@@ -40,6 +42,7 @@ export const IdeaStore = create((set, get) => ({
     }
   },
 
+  // Logged in user ideas
   loadLoggedInUserIdea: async () => {
     try {
       set({ loadingLoggedInUserIdeas: true });
@@ -52,6 +55,7 @@ export const IdeaStore = create((set, get) => ({
     }
   },
 
+  // Load view user
   loadViewUser: async (id) => {
     try {
       set({ loadingViewUser: true });
@@ -67,6 +71,7 @@ export const IdeaStore = create((set, get) => ({
     }
   },
 
+  // Upload ideas
   uploadIdea: async (data) => {
     try {
       set({ uploadingIdea: true });
@@ -79,6 +84,7 @@ export const IdeaStore = create((set, get) => ({
     }
   },
 
+  // Like idea
   likeIdea: async (id) => {
     try {
       const response = await axiosInstance.put(`/ideas/toggleIdeaLike/${id}`);
@@ -87,6 +93,7 @@ export const IdeaStore = create((set, get) => ({
     }
   },
 
+  // Delete idea
   deleteIdea: async (id) => {
     try {
       const response = await axiosInstance.delete(`/ideas/deleteIdea/${id}`);
@@ -103,6 +110,7 @@ export const IdeaStore = create((set, get) => ({
     }
   },
 
+  // Search ideas
   searchIdeas: async (query) => {
     try {
       set({ searching: true });

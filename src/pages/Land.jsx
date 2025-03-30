@@ -11,11 +11,11 @@ const Land = () => {
           ✨ Welcome To Start-X <ArrowRight className="ml-2" />
         </Button>
 
-        <h1 className="w-full text-[#0a0908] font-[Poppins] text-4xl md:text-6xl lg:text-7xl font-bold">
-          Turn Ideas into Reality
+        <h1 className="w-full text-[#0a0908] font-[Poppins] text-5xl md:text-6xl lg:text-7xl font-bold">
+          Turn <span className="text-blue-600">Ideas</span> into Reality
         </h1>
 
-        <p className="w-full md:w-2xl text-sm md:text-lg text-zinc-500">
+        <p className="w-full md:w-2xl text-md md:text-lg text-zinc-500">
           "Have an idea? Share it with the world, get feedback, and connect with
           like-minded thinkers. Whether it's a startup, project, innovation, or
           creative concept—join a community where ideas turn into reality!"

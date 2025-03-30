@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { Navigate } from "react-router-dom";
 
-// pages import
+// Pages import
 import Land from "./pages/Land";
 import ViewIdeas from "./pages/ViewIdeas";
 import ViewIdea from "./pages/ViewIdea";

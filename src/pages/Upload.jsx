@@ -30,7 +30,7 @@ const Upload = () => {
   };
 
   return (
-    <div className="w-full h-auto flex items-center justify-center lg:mt-24">
+    <div className="w-full h-auto flex items-center justify-center mt-24 lg:mt-24">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="max-w-lg w-full flex flex-col items-center gap-6 p-4"
