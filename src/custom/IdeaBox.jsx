@@ -9,7 +9,7 @@ const IdeaBox = ({ idea, isProfilePage = false }) => {
   const formatedDate = formatDate(idea?.createdAt);
 
   return (
-    <div className="bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 shadow-lg rounded-sm p-4 w-80">
+    <div className="bg-white hover:bg-zinc-200 border border-gray-300 dark:border-gray-700 shadow-lg rounded-sm p-4 w-80 transition-colors duration-300 ease-in-out">
       <div className="flex justify-between items-center text-gray-500 text-sm font-[Inter]">
         <p className="text-xs font-[Inter]">{formatedDate}</p>
         <Badge>{idea?.category}</Badge>

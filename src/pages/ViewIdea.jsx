@@ -71,7 +71,7 @@ const IdeaDetail = ({ idea, id }) => {
   return (
     <div className="w-full flex flex-col items-center gap-10 mt-12">
       {/* 🔹 User Info */}
-      <div className="w-full sm:w-[90%] lg:w-[60%] flex flex-col sm:flex-row items-start justify-between text-center sm:text-left gap-6">
+      <div className="w-full sm:w-[90%] lg:w-[60%] flex flex-col sm:flex-row items-center justify-between text-center sm:text-left gap-6">
         <Link to={`/view-user/${idea?.user._id}`}>
           <div className="flex items-center gap-2">
             <img
