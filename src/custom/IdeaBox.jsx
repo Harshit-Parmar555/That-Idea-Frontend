@@ -3,13 +3,16 @@ import { Link } from "react-router-dom";
 import { Heart } from "lucide-react";
 import { formatDate } from "@/utils/date";
 import DeleteDialog from "./DeleteDialog";
+import { Badge } from "@/components/ui/badge";
 
 const IdeaBox = ({ idea, isProfilePage = false }) => {
   const formatedDate = formatDate(idea?.createdAt);
+
   return (
     <div className="bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 shadow-lg rounded-sm p-4 w-80">
       <div className="flex justify-between items-center text-gray-500 text-sm font-[Inter]">
-        <p>{formatedDate}</p>
+        <p className="text-xs font-[Inter]">{formatedDate}</p>
+        <Badge>{idea?.category}</Badge>
       </div>
 
       <div className="flex items-center justify-between mt-3">
@@ -18,7 +21,7 @@ const IdeaBox = ({ idea, isProfilePage = false }) => {
             By {idea?.user?.username}
           </p>
           <h2 className="text-xl font-bold font-[Poppins] line-clamp-1">
-            Auto-Save
+            {idea?.name}
           </h2>
         </div>
 

@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import { formatDate } from "@/utils/date";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import { Badge } from "@/components/ui/badge";
 
 const ViewIdea = () => {
   const { loadViewIdea, loadingViewIdea, viewIdea } = IdeaStore();
@@ -72,7 +73,7 @@ const IdeaDetail = ({ idea, id }) => {
       {/* 🔹 User Info */}
       <div className="w-full sm:w-[90%] lg:w-[60%] flex flex-col sm:flex-row items-start justify-between text-center sm:text-left gap-6">
         <Link to={`/view-user/${idea?.user._id}`}>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
             <img
               src={idea?.user.avatar}
               alt="User Avatar"
@@ -109,6 +110,7 @@ const IdeaDetail = ({ idea, id }) => {
         <h1 className="text-2xl font-[Poppins] font-semibold text-gray-200">
           {idea?.name}
         </h1>
+        <Badge>{idea?.category}</Badge>
         <DetailRow title="Description" content={idea?.description} />
         <DetailRow title="Pitch" content={idea?.pitch} />
       </div>
@@ -118,7 +120,9 @@ const IdeaDetail = ({ idea, id }) => {
 
 // 🔹 Reusable Component for Pitch Details
 const DetailRow = ({ title, content }) => (
-  <p className="font-[Inter] text-lg text-gray-300 leading-relaxed break-words text-wrap">
-    <span className="text-white font-semibold">{title} : </span> {content}
-  </p>
+  <>
+    <p className="font-[Inter] text-lg text-gray-300 leading-relaxed break-words text-wrap">
+      <span className="text-white font-semibold">{title} : </span> {content}
+    </p>
+  </>
 );

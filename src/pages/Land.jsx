@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Github } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -39,7 +39,7 @@ const Intro = () => {
         </Link>
 
         <a
-          href="https://github.com/Harshit-Parmar555"
+          href="https://github.com/Harshit-Parmar555/That-Idea-Backend"
           target="_blank"
           rel="noopener noreferrer"
         >

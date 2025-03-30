@@ -18,17 +18,19 @@ const Upload = () => {
     try {
       const form = new FormData();
       form.append("name", data.name);
+      form.append("category", data.category);
       form.append("description", data.description);
       form.append("coverImage", data.coverImg[0]);
       form.append("pitch", data.pitch);
-      uploadIdea(form);
+      await uploadIdea(form);
+      reset();
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <div className="w-full h-auto flex items-center justify-center lg:mt-16">
+    <div className="w-full h-auto flex items-center justify-center lg:mt-24">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="max-w-lg w-full flex flex-col items-center gap-6 p-4"
@@ -67,7 +69,7 @@ const Upload = () => {
           <Textarea
             placeholder="Enter A Brief Description About Idea"
             className="h-24 border border-zinc-600 text-zinc-200"
-            {...register("para", {
+            {...register("description", {
               required: "Description is required",
               minLength: {
                 value: 10,
@@ -81,6 +83,28 @@ const Upload = () => {
           />
           {errors.para && (
             <p className="text-red-500 text-sm">{errors.para.message}</p>
+          )}
+        </div>
+
+        {/* Idea category field */}
+        <div className="w-full flex flex-col gap-2">
+          <label className="block text-sm font-medium text-zinc-200 mb-1">
+            Idea Category
+          </label>
+          <Input
+            {...register("category", {
+              required: "This field is required",
+              maxLength: { value: 15, message: "Max 10 characters allowed" },
+              pattern: {
+                value: /^\S+$/, // Ensures only one word (no spaces)
+                message: "Only one word allowed",
+              },
+            })}
+            placeholder="Enter Category of Idea"
+            className="h-12 border border-zinc-600 text-zinc-200"
+          />
+          {errors.category && (
+            <p className="text-red-500 text-sm">{errors.category.message}</p>
           )}
         </div>
 

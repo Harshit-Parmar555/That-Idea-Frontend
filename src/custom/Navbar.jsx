@@ -26,7 +26,7 @@ const Navbar = () => {
             />
             <div>
               <p className="text-sm font-[Inter] text-zinc-200">Hello</p>
-              <h1 className="text-base font-[Inter] text-zinc-200 font-semibold">
+              <h1 className="text-base font-[Inter] text-zinc-200 font-semibold line-clamp-1">
                 {user.username}
               </h1>
             </div>

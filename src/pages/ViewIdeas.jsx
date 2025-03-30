@@ -54,7 +54,7 @@ const Container = () => {
         />
         <Button
           onClick={handleSearch}
-          className="ml-3 bg-white text-black hover:bg-zinc-200"
+          className="ml-3 bg-white text-black hover:bg-zinc-200 rounded-sm"
         >
           <Search className="mr-1" size={18} />
           Search
