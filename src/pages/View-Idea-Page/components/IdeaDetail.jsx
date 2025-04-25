@@ -1,51 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { Heart } from "lucide-react";
-import { ViewIdeaSkeleton } from "@/custom/Skeleton";
-import { IdeaStore } from "@/store/useIdeaStore";
+import React, { useState } from "react";
 import { AuthStore } from "@/store/useAuthStore";
-import { useParams } from "react-router-dom";
 import { formatDate } from "@/utils/date";
 import { Link } from "react-router-dom";
-import toast from "react-hot-toast";
+import { Heart } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import toast from "react-hot-toast";
+import { IdeaStore } from "@/store/useIdeaStore";
 
-const ViewIdea = () => {
-  const { loadViewIdea, loadingViewIdea, viewIdea } = IdeaStore();
-  const { id } = useParams();
-  useEffect(() => {
-    loadViewIdea(id);
-  }, [id]);
-
-  if (loadingViewIdea) {
-    return <ViewIdeaSkeleton />;
-  }
-
-  return (
-    <div className="w-full min-h-screen flex flex-col items-center px-4">
-      <Banner idea={viewIdea} />
-      <IdeaDetail idea={viewIdea} id={id} />
-    </div>
-  );
-};
-
-export default ViewIdea;
-
-// 🔹 Banner Section (Fixed Aspect Ratio)
-const Banner = ({ idea }) => {
-  return (
-    <div className="w-full flex justify-center mt-24">
-      <div className="w-full sm:w-[90%] lg:w-[60%] aspect-[16/9] rounded-md overflow-hidden shadow-lg border-[1px] border-zinc-800">
-        <img
-          src={idea?.coverImage}
-          alt="Idea Banner"
-          className="w-full h-full object-cover "
-        />
-      </div>
-    </div>
-  );
-};
-
-// 🔹 Idea Details Section
 const IdeaDetail = ({ idea, id }) => {
   const { user, isAuthenticated } = AuthStore();
   const { likeIdea } = IdeaStore();
@@ -126,3 +87,5 @@ const DetailRow = ({ title, content }) => (
     </p>
   </>
 );
+
+export default IdeaDetail;

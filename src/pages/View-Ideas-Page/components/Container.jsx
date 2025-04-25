@@ -1,21 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState , useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
-import IdeaBox from "@/custom/IdeaBox";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import toast from "react-hot-toast";
 import { IdeaBoxSkeleton } from "@/custom/Skeleton";
-import { useSearchParams, useNavigate } from "react-router-dom";
-import { IdeaStore } from "@/store/useIdeaStore.js";
+import IdeaBox from "@/custom/IdeaBox";
 
-const ViewIdeas = () => {
-  return (
-    <div className="w-full h-auto flex flex-col items-center mt-28">
-      <Container />
-    </div>
-  );
-};
-
-export default ViewIdeas;
+// Store Imports
+import { AuthStore } from "@/store/useAuthStore";
+import { IdeaStore } from "@/store/useIdeaStore";
 
 const Container = () => {
   const navigate = useNavigate();
@@ -69,3 +63,5 @@ const Container = () => {
     </div>
   );
 };
+
+export default Container;

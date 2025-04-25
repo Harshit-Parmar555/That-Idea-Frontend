@@ -4,12 +4,13 @@ import { Toaster } from "react-hot-toast";
 import { Navigate } from "react-router-dom";
 
 // Pages import
-import Land from "./pages/Land";
-import ViewIdeas from "./pages/ViewIdeas";
-import ViewIdea from "./pages/ViewIdea";
-import Profile from "./pages/Profile";
-import ViewUserProfile from "./pages/ViewUserProfile";
-import Upload from "./pages/Upload";
+import Land from "./pages/Land-Page/Land";
+import ViewIdeas from "./pages/View-Ideas-Page/ViewIdeas";
+import ViewIdea from "./pages/View-Idea-Page/ViewIdea";
+import Profile from "./pages/Profile-Page/Profile";
+import ViewUserProfile from "./pages/View-User-Profile-Page/ViewUserProfile";
+import Upload from "./pages/Upload-Page/Upload";
+import NotFound from "./pages/Not-Found-Page/NotFound";
 import Layout from "./Layout";
 
 import Spinner from "./custom/Spinner";
@@ -75,7 +76,9 @@ const App = () => {
               </ProtectedRoute>
             }
           />
+
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

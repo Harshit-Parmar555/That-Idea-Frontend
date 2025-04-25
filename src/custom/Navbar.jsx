@@ -15,7 +15,7 @@ const Navbar = () => {
   };
   return (
     <div className="w-full h-16 bg-white flex items-center justify-between px-4 md:px-16 border-b-[1px] border-zinc-200 fixed">
-      <img src={logo} alt="" className="h-8 invert" />
+      <img src={logo} alt="" className="h-12" />
       {user ? (
         <Link to="/profile">
           <div className="flex items-center gap-2">
