@@ -6,11 +6,12 @@ import { Heart } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import toast from "react-hot-toast";
 import { IdeaStore } from "@/store/useIdeaStore";
+import clsx from "clsx"; // Import clsx for conditional class management
 
 const IdeaDetail = ({ idea, id }) => {
   const { user, isAuthenticated } = AuthStore();
   const { likeIdea } = IdeaStore();
-  const [likes, setlikes] = useState(idea?.likes);
+  const [likes, setLikes] = useState(idea?.likes || []); // Initialize with empty array to avoid undefined issues
   const formatedDate = formatDate(idea?.createdAt);
 
   const handleLike = async () => {
@@ -19,7 +20,7 @@ const IdeaDetail = ({ idea, id }) => {
     }
     try {
       await likeIdea(id);
-      setlikes((prevLikes) => {
+      setLikes((prevLikes) => {
         const updatedLikes = prevLikes.includes(user?._id)
           ? prevLikes.filter((likeId) => likeId !== user?._id) // Unlike
           : [...prevLikes, user?._id]; // Like
@@ -29,6 +30,7 @@ const IdeaDetail = ({ idea, id }) => {
       toast.error("Failed to like the idea.");
     }
   };
+
   return (
     <div className="w-full flex flex-col items-center gap-10 mt-12">
       {/* 🔹 User Info */}
@@ -38,7 +40,7 @@ const IdeaDetail = ({ idea, id }) => {
             <img
               src={idea?.user.avatar}
               alt="User Avatar"
-              className="h-16 w-16 object-cover rounded-full border-2 border-gray-300 shadow-md "
+              className="h-16 w-16 object-cover rounded-full border-2 border-gray-300 shadow-md"
             />
             <div>
               <h1 className="text-2xl font-[Poppins] font-semibold text-black">
@@ -56,9 +58,10 @@ const IdeaDetail = ({ idea, id }) => {
             <button>
               <Heart
                 onClick={handleLike}
-                className={`w-6 h-6 transition-all stroke-red-600  ${
-                  likes?.includes(user?._id) ? "fill-red-600" : ""
-                }`}
+                className={clsx(
+                  "w-6 h-6 transition-all stroke-red-600",
+                  likes?.includes(user?._id) && "fill-red-600"
+                )}
               />
             </button>
             <p className="text-zinc-400">{likes?.length}</p>

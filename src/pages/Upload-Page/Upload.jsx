@@ -4,6 +4,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { IdeaStore } from "@/store/useIdeaStore";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 
 const Upload = () => {
   const { uploadIdea, uploadingIdea } = IdeaStore();
@@ -11,6 +18,7 @@ const Upload = () => {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
   } = useForm();
 
@@ -81,31 +89,40 @@ const Upload = () => {
               },
             })}
           />
-          {errors.para && (
-            <p className="text-red-500 text-sm">{errors.para.message}</p>
+          {errors.description && (
+            <p className="text-red-500 text-sm">{errors.description.message}</p>
           )}
         </div>
 
-        {/* Idea category field */}
+        {/* Category Dropdown */}
         <div className="w-full flex flex-col gap-2">
           <label className="block text-sm font-medium text-zinc-800 mb-1">
             Idea Category
           </label>
-          <Input
-            {...register("category", {
-              required: "This field is required",
-              maxLength: { value: 15, message: "Max 10 characters allowed" },
-              pattern: {
-                value: /^\S+$/, // Ensures only one word (no spaces)
-                message: "Only one word allowed",
-              },
-            })}
-            placeholder="Enter Category of Idea"
-            className="h-12 border border-zinc-600 text-zinc-800"
-          />
+          <Select
+            onValueChange={(value) => setValue("category", value)}
+          >
+            <SelectTrigger className="h-12 border border-zinc-600 text-zinc-800">
+              <SelectValue placeholder="Select a Category" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="Technology">Technology</SelectItem>
+              <SelectItem value="Education">Education</SelectItem>
+              <SelectItem value="Health">Health</SelectItem>
+              <SelectItem value="Environment">Environment</SelectItem>
+              <SelectItem value="Finance">Finance</SelectItem>
+            </SelectContent>
+          </Select>
           {errors.category && (
             <p className="text-red-500 text-sm">{errors.category.message}</p>
           )}
+          {/* Hidden input to keep compatibility with react-hook-form */}
+          <input
+            type="hidden"
+            {...register("category", {
+              required: "Category is required",
+            })}
+          />
         </div>
 
         {/* Cover Image Field */}

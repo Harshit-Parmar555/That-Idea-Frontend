@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
@@ -7,8 +7,7 @@ import toast from "react-hot-toast";
 import { IdeaBoxSkeleton } from "@/custom/Skeleton";
 import IdeaBox from "@/custom/IdeaBox";
 
-// Store Imports
-import { AuthStore } from "@/store/useAuthStore";
+// Store
 import { IdeaStore } from "@/store/useIdeaStore";
 
 const Container = () => {
@@ -17,48 +16,52 @@ const Container = () => {
     IdeaStore();
   const [searchParams] = useSearchParams();
   const [search, setSearch] = useState(searchParams.get("query") || "");
+
   useEffect(() => {
     const query = searchParams.get("query");
-
-    if (query) {
-      searchIdeas(query);
-    } else {
-      loadIdeas();
-    }
+    query ? searchIdeas(query) : loadIdeas();
   }, [searchParams]);
 
   const handleSearch = () => {
     if (search.trim() === "") {
-      toast.error("Search Field is Empty");
+      toast.error("Search field is empty.");
       return;
     }
     navigate(`/view-ideas?query=${search}`);
   };
 
   return (
-    <div className="w-[90%] flex flex-col items-center gap-6">
-      {/* 🔹 Search Box */}
-      <div className="w-full sm:w-[80%] lg:w-[50%] h-16 flex items-center border rounded-full px-4 py-2 bg-white shadow-sm mb-4 border-blue-200">
+    <div className="w-full px-4 py-4 flex flex-col items-center">
+      {/* 🔍 Search */}
+      <div className="w-full sm:w-[80%] lg:w-[50%] flex items-center bg-white border border-blue-200 rounded-full shadow-md px-4 py-2 mb-10">
         <Input
           type="text"
-          placeholder="Search . . . "
+          placeholder="Search ideas, startups, innovations..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full outline-none border-none shadow-none text-lg font-[Inter]  focus-visible:outline-none focus-visible:ring-0"
+          className="w-full shadow-none border-none text-base font-[Inter] focus-visible:outline-none focus-visible:ring-0"
         />
+
         <Button
           onClick={handleSearch}
-          className="ml-3 bg-blue-600 hover:bg-blue-700 rounded-full"
+          className="ml-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full flex items-center gap-1"
         >
-          <Search className="mr-1" size={18} />
-          {searching ? "Searching" : "Search"}
+          <Search size={18} />
+          {searching ? "Searching..." : "Search"}
         </Button>
       </div>
 
-      <div className="w-full flex items-center justify-center gap-6 flex-wrap pb-12">
-        {loadingIdeas || searching
-          ? [...Array(3)].map((_, index) => <IdeaBoxSkeleton key={index} />)
-          : Ideas.map((Idea, index) => <IdeaBox key={index} idea={Idea} />)}
+      {/* 💡 Ideas List */}
+      <div className="w-full max-w-7xl grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-4">
+        {loadingIdeas || searching ? (
+          [...Array(6)].map((_, index) => <IdeaBoxSkeleton key={index} />)
+        ) : Ideas.length > 0 ? (
+          Ideas.map((idea, index) => <IdeaBox key={index} idea={idea} />)
+        ) : (
+          <div className="col-span-full text-center mt-20 text-zinc-500 text-lg font-[Inter]">
+            No ideas found. Try another keyword.
+          </div>
+        )}
       </div>
     </div>
   );

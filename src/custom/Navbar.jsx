@@ -24,7 +24,8 @@ const Navbar = () => {
               alt=""
               className="h-10 w-10 rounded-full object-cover"
             />
-            <div>
+            
+            <div className="hidden md:flex md:flex-col">
               <p className="text-sm font-[Inter] text-zinc-800">Hello</p>
               <h1 className="text-base font-[Inter] text-black font-semibold line-clamp-1">
                 {user.username}

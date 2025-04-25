@@ -10,53 +10,64 @@ const IdeaBox = ({ idea, isProfilePage = false }) => {
   const formatedDate = formatDate(idea?.createdAt);
 
   return (
-    <div className="bg-white hover:border-blue-400 border-4 border-zinc-500 shadow-lg shadow-zinc-400 rounded-2xl p-4 w-96 transition-colors duration-300 ease-in-out flex flex-col gap-2">
-      <div className="flex justify-between items-center text-gray-500 text-sm font-[Inter]">
-        <p className="text-xs font-[Inter]">{formatedDate}</p>
-        <Badge className="bg-blue-500">{idea?.category}</Badge>
+    <div className="bg-white border border-zinc-200 rounded-2xl p-5 w-full max-w-sm shadow-sm hover:shadow-xl transition-shadow duration-300 ease-in-out flex flex-col gap-4">
+      {/* Top Info */}
+      <div className="flex justify-between items-center text-sm text-zinc-500 font-[Inter]">
+        <span>{formatedDate}</span>
+        <Badge className="bg-blue-100 text-blue-600">{idea?.category}</Badge>
       </div>
 
-      <div className="flex items-center justify-between mt-3">
-        <div className="flex flex-col gap-1">
-          <p className="text-sm  font-[Poppins] text-zinc-600">
-            By {idea?.user?.username}
+      {/* Author & Title */}
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-sm text-zinc-600 font-[Inter]">
+            By <span className="font-medium">{idea?.user?.username}</span>
           </p>
-          <h2 className="text-xl font-medium font-[Poppins] line-clamp-1">
+          <h2 className="text-lg md:text-xl font-semibold font-[Poppins] text-zinc-900 line-clamp-1">
             {idea?.name}
           </h2>
         </div>
-
         <img
           src={idea?.user?.avatar}
           alt="Owner"
-          className="w-10 h-10 rounded-full object-cover"
+          className="w-10 h-10 rounded-full object-cover border border-zinc-200"
         />
       </div>
 
       {/* Description */}
-      <p className="text-gray-600 dark:text-gray-300 mt-2 line-clamp-2 font-[Inter] text-sm">
+      <p className="text-sm text-zinc-600 font-[Inter] line-clamp-3">
         {idea?.description}
       </p>
 
-      {/* Idea Image */}
-      <img
-        src={idea?.coverImage}
-        alt="Idea Banner"
-        className="w-full h-44 object-cover rounded-lg my-3"
-      />
+      {/* Cover Image */}
+      <div className="overflow-hidden rounded-xl">
+        <img
+          src={idea?.coverImage}
+          alt="Idea Cover"
+          className="w-full h-44 object-cover rounded-lg transition-transform duration-300 hover:scale-105"
+        />
+      </div>
 
-      {/* Tags & Button */}
-      <div className="flex justify-between items-center px-2">
+      {/* Footer */}
+      <div className="flex justify-between items-center mt-2">
         <Link to={`/view-idea/${idea?._id}`}>
-          <Button className="bg-black text-white px-3 py-1 rounded-sm text-sm font-[Inter] cursor-pointer">
+          <Button className="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 text-sm rounded-md font-[Inter]">
             Read More
           </Button>
         </Link>
-        {isProfilePage ? <DeleteDialog id={idea?._id} /> : ""}
-        <div className="flex items-center gap-1">
-          <Heart className="w-6 h-6 transition-all fill-red-500 stroke-none" />
-          <p className="text-xs font-[Inter]">{idea?.likes?.length || 0}</p>
-        </div>
+
+        {isProfilePage ? (
+          ""
+        ) : (
+          <div className="flex items-center gap-2">
+            <Heart className="w-5 h-5 text-red-500 fill-transparent stroke-red-500 hover:fill-red-500 transition-all duration-200" />
+            <span className="text-sm font-[Inter]">
+              {idea?.likes?.length || 0}
+            </span>
+          </div>
+        )}
+
+        {isProfilePage && <DeleteDialog id={idea?._id} />}
       </div>
     </div>
   );

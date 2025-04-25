@@ -89,6 +89,7 @@ export const IdeaStore = create((set, get) => ({
     try {
       const response = await axiosInstance.put(`/ideas/toggleIdeaLike/${id}`);
     } catch (error) {
+      console.log(error)
       toast.error(error.response.data.message);
     }
   },
