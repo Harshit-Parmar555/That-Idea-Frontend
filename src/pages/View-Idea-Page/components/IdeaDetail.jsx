@@ -6,27 +6,39 @@ import { Heart } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import toast from "react-hot-toast";
 import { IdeaStore } from "@/store/useIdeaStore";
-import clsx from "clsx"; // Import clsx for conditional class management
+import clsx from "clsx";
 
 const IdeaDetail = ({ idea, id }) => {
   const { user, isAuthenticated } = AuthStore();
   const { likeIdea } = IdeaStore();
-  const [likes, setLikes] = useState(idea?.likes || []); // Initialize with empty array to avoid undefined issues
+  const [likes, setLikes] = useState(idea?.likes || []);
   const formatedDate = formatDate(idea?.createdAt);
 
   const handleLike = async () => {
     if (!isAuthenticated) {
       return toast.error("Please login first!");
     }
+
+    // 🔵 1. Optimistic UI update first
+    setLikes((prevLikes) => {
+      const updatedLikes = prevLikes.includes(user?._id)
+        ? prevLikes.filter((likeId) => likeId !== user?._id)
+        : [...prevLikes, user?._id];
+      return updatedLikes;
+    });
+
     try {
+      // 🔵 2. Then call API
       await likeIdea(id);
+    } catch (error) {
+      // 🔵 3. If API fails, rollback the UI
       setLikes((prevLikes) => {
         const updatedLikes = prevLikes.includes(user?._id)
-          ? prevLikes.filter((likeId) => likeId !== user?._id) // Unlike
-          : [...prevLikes, user?._id]; // Like
+          ? prevLikes.filter((likeId) => likeId !== user?._id)
+          : [...prevLikes, user?._id];
         return updatedLikes;
       });
-    } catch (error) {
+
       toast.error("Failed to like the idea.");
     }
   };
@@ -59,7 +71,7 @@ const IdeaDetail = ({ idea, id }) => {
               <Heart
                 onClick={handleLike}
                 className={clsx(
-                  "w-6 h-6 transition-all stroke-red-600",
+                  "w-6 h-6 transition-all duration-200 stroke-red-600 hover:scale-125",
                   likes?.includes(user?._id) && "fill-red-600"
                 )}
               />
