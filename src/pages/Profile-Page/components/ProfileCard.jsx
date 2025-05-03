@@ -12,10 +12,10 @@ const ProfileCard = ({ user, logout }) => {
       />
       <div className="flex flex-col text-center gap-4 w-full sm:w-auto">
         <div>
-          <h1 className="text-2xl font-[Poppins] font-semibold text-white">
+          <h1 className="text-xl font-[Poppins] font-semibold text-white">
             Hello, {user.username}
           </h1>
-          <p className="font-[Inter] text-sm text-zinc-200 font-semibold">
+          <p className="font-[Inter] text-xs text-zinc-200 font-semibold">
             {user.email}
           </p>
         </div>
@@ -25,7 +25,10 @@ const ProfileCard = ({ user, logout }) => {
           </Button>
         </Link>
 
-        <Button onClick={logout} className="w-full bg-red-600 hover:bg-red-600 cursor-pointer">
+        <Button
+          onClick={logout}
+          className="w-full bg-red-600 hover:bg-red-600 cursor-pointer"
+        >
           Logout
         </Button>
       </div>

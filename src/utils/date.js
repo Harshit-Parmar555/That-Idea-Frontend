@@ -1,16 +1,13 @@
-// Format mongo DB date to YYYY-MM-DD
+// Format MongoDB date to "MMM DD, YYYY"
 export const formatDate = (dateString) => {
   const date = new Date(dateString);
   if (isNaN(date.getTime())) {
     return "Invalid Date";
   }
 
-  return date.toLocaleString("en-US", {
+  return date.toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
     day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: true,
   });
 };

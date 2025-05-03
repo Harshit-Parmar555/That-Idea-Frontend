@@ -46,7 +46,32 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <Toaster />
+      <Toaster
+        position="top-center"
+        toastOptions={{
+          // Global styles for all toasts
+          style: {
+            background: "#111", // Matches your dark theme
+            color: "#fff",
+            border: "1px solid #333",
+            fontFamily: "Inter, sans-serif",
+            fontSize: "0.875rem", // equivalent to text-sm
+            padding: "12px 16px",
+          },
+          success: {
+            iconTheme: {
+              primary: "#4ade80", // green-400
+              secondary: "#000",
+            },
+          },
+          error: {
+            iconTheme: {
+              primary: "#f87171", // red-400
+              secondary: "#000",
+            },
+          },
+        }}
+      />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route
@@ -76,7 +101,6 @@ const App = () => {
               </ProtectedRoute>
             }
           />
-
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

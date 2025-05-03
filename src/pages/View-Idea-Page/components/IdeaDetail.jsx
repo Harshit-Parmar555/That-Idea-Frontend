@@ -46,49 +46,52 @@ const IdeaDetail = ({ idea, id }) => {
   return (
     <div className="w-full flex flex-col items-center gap-10 mt-12">
       {/* 🔹 User Info */}
-      <div className="w-full sm:w-[90%] lg:w-[60%] flex flex-col sm:flex-row items-center justify-between text-center sm:text-left gap-6">
+      <div className="w-full sm:w-[90%] lg:w-[60%] flex items-center justify-between text-center sm:text-left gap-6">
         <Link to={`/view-user/${idea?.user._id}`}>
           <div className="flex items-center gap-2">
             <img
               src={idea?.user.avatar}
               alt="User Avatar"
-              className="h-16 w-16 object-cover rounded-full border-2 border-zinc-800 shadow-md"
+              className="h-14 w-14 object-cover rounded-full border-2 border-zinc-800 shadow-md"
             />
             <div>
-              <h1 className="text-2xl font-[Poppins] font-semibold text-white">
+              <h1 className="text-xl font-[Poppins] font-semibold text-white">
                 {idea?.user?.username}
               </h1>
-              <p className="font-[Inter] text-sm text-zinc-200">
+              <p className="font-[Inter] text-xs text-zinc-200">
                 {idea?.user?.email}
               </p>
             </div>
           </div>
         </Link>
         <div className="flex flex-col items-center gap-4">
-          <p className="font-[Inter] text-sm text-zinc-200">{formatedDate}</p>
-          <div className="flex items-center gap-2">
-            <button>
-              <Heart
-                onClick={handleLike}
-                className={clsx(
-                  "w-6 h-6 transition-all duration-200 stroke-red-600 hover:scale-125",
-                  likes?.includes(user?._id) && "fill-red-600"
-                )}
-              />
-            </button>
-            <p className="text-zinc-400">{likes?.length}</p>
-          </div>
+          <p className="font-[Inter] text-xs text-zinc-200">{formatedDate}</p>
+          <Badge className="bg-white text-black">{idea?.category}</Badge>
         </div>
       </div>
 
       {/* 🔹 Pitch Details */}
-      <div className="w-full sm:w-[90%] lg:w-[60%] text-left flex flex-col gap-6 pb-8">
+      <div className="w-full sm:w-[90%] lg:w-[60%] text-left flex flex-col gap-6 ">
         <h1 className="text-2xl font-[Poppins] font-semibold text-white">
           {idea?.name}
         </h1>
         <Badge className="bg-white/10 text-white">{idea?.category}</Badge>
         <DetailRow title="Description" content={idea?.description} />
         <DetailRow title="Pitch" content={idea?.pitch} />
+      </div>
+      <div className="w-full sm:w-[90%] lg:w-[60%] flex items-center justify-between gap-4 pb-8">
+        <div className="flex gap-2">
+          <button>
+            <Heart
+              onClick={handleLike}
+              className={clsx(
+                "w-6 h-6 transition-all duration-200 stroke-red-600 hover:scale-125",
+                likes?.includes(user?._id) && "fill-red-600"
+              )}
+            />
+          </button>
+          <p className="text-zinc-400">{likes?.length}</p>
+        </div>
       </div>
     </div>
   );
