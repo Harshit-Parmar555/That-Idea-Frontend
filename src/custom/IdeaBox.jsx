@@ -85,7 +85,7 @@ const IdeaBox = ({ idea, isProfilePage = false }) => {
           <DeleteDialog id={idea?._id} />
         ) : (
           <div className="flex items-center gap-2">
-            <Heart className="w-5 h-5 text-red-500 fill-transparent stroke-red-500 hover:fill-red-500 transition-all duration-200" />
+            <Heart className="w-5 h-5 text-red-500  stroke-red-500 hover:fill-red-500 transition-all duration-200 fill-red-600" />
             <span className="text-sm text-zinc-400 font-[Inter]">
               {idea?.likes?.length || 0}
             </span>

@@ -1,6 +1,6 @@
 export const IdeaBoxSkeleton = () => {
   return (
-    <div className="bg-zinc-900 border border-zinc-700 shadow-lg rounded-sm p-4 w-80 animate-pulse">
+    <div className="bg-zinc-900 border border-zinc-700 shadow-lg rounded-sm p-4 w-96 animate-pulse">
       {/* Date */}
       <div className="h-4 w-24 bg-zinc-700 rounded"></div>
 
@@ -20,7 +20,7 @@ export const IdeaBoxSkeleton = () => {
       </div>
 
       {/* Image Placeholder */}
-      <div className="w-full h-32 bg-zinc-700 rounded-lg my-3"></div>
+      <div className="w-full h-44 bg-zinc-700 rounded-lg my-3"></div>
 
       {/* Button */}
       <div className="h-8 w-24 bg-zinc-600 rounded"></div>
