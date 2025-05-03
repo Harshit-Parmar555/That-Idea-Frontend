@@ -1,6 +1,6 @@
 export const IdeaBoxSkeleton = () => {
   return (
-    <div className="bg-zinc-900 border border-zinc-700 shadow-lg rounded-sm p-4 w-96 animate-pulse">
+    <div className="bg-zinc-900 border border-zinc-700 shadow-lg rounded-sm p-4 sm:w-44 md:w-96 animate-pulse">
       {/* Date */}
       <div className="h-4 w-24 bg-zinc-700 rounded"></div>
 
