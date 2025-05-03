@@ -20,7 +20,7 @@ const ViewIdea = () => {
   }
 
   return (
-    <div className="w-full min-h-screen flex flex-col items-center px-4">
+    <div className="w-full min-h-screen bg-[#090909] flex flex-col items-center px-4">
       <Banner idea={viewIdea} />
       <IdeaDetail idea={viewIdea} id={id} />
     </div>

@@ -38,23 +38,23 @@ const Upload = () => {
   };
 
   return (
-    <div className="w-full h-auto flex items-center justify-center mt-24 lg:mt-24">
+    <div className="w-full h-auto flex items-center justify-center pt-24">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="max-w-lg w-full flex flex-col items-center gap-6 p-4"
       >
-        <h1 className="text-2xl font-[Inter] font-semibold text-black">
-          Upload Your <span className="text-blue-600">Idea</span>
+        <h1 className="text-2xl font-[Inter] font-semibold text-white">
+          Upload Your Idea
         </h1>
 
         {/* Name Field */}
         <div className="w-full flex flex-col gap-2">
-          <label className="block text-sm font-medium text-zinc-800 mb-1">
+          <label className="block text-sm font-medium text-zinc-200 mb-1">
             Idea Name
           </label>
           <Input
             placeholder="Enter Name Of Idea"
-            className="h-12 border border-zinc-600 text-zinc-800"
+            className="h-12 border border-zinc-600 text-white placeholder:text-zinc-600"
             {...register("name", {
               required: "Name is required",
               minLength: { value: 3, message: "Minimum 3 characters required" },
@@ -71,12 +71,12 @@ const Upload = () => {
 
         {/* Description Field */}
         <div className="w-full flex flex-col gap-2">
-          <label className="block text-sm font-medium text-zinc-800 mb-1">
+          <label className="block text-sm font-medium text-zinc-200 mb-1">
             Brief Description
           </label>
           <Textarea
             placeholder="Enter A Brief Description About Idea"
-            className="h-24 border border-zinc-600 text-zinc-800"
+            className="h-12 border border-zinc-600 text-white placeholder:text-zinc-600"
             {...register("description", {
               required: "Description is required",
               minLength: {
@@ -96,16 +96,14 @@ const Upload = () => {
 
         {/* Category Dropdown */}
         <div className="w-full flex flex-col gap-2">
-          <label className="block text-sm font-medium text-zinc-800 mb-1">
+          <label className="block text-sm font-medium text-zinc-200 mb-1">
             Idea Category
           </label>
-          <Select
-            onValueChange={(value) => setValue("category", value)}
-          >
-            <SelectTrigger className="h-12 border border-zinc-600 text-zinc-800">
+          <Select onValueChange={(value) => setValue("category", value)}>
+            <SelectTrigger className="h-12 border border-zinc-600 text-zinc-200 placeholder-zinc-600">
               <SelectValue placeholder="Select a Category" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-zinc-950 text-zinc-200 border border-zinc-700">
               <SelectItem value="Technology">Technology</SelectItem>
               <SelectItem value="Education">Education</SelectItem>
               <SelectItem value="Health">Health</SelectItem>
@@ -113,6 +111,7 @@ const Upload = () => {
               <SelectItem value="Finance">Finance</SelectItem>
             </SelectContent>
           </Select>
+
           {errors.category && (
             <p className="text-red-500 text-sm">{errors.category.message}</p>
           )}
@@ -127,13 +126,13 @@ const Upload = () => {
 
         {/* Cover Image Field */}
         <div className="w-full flex flex-col gap-2">
-          <label className="block text-sm font-medium text-zinc-800 mb-1">
+          <label className="block text-sm font-medium text-zinc-200 mb-1">
             Cover Image
           </label>
           <Input
             type="file"
             accept="image/*"
-            className="h-12 border border-zinc-600 text-zinc-800"
+            className="h-12 border border-zinc-600 text-white placeholder:text-zinc-600"
             {...register("coverImg", { required: "Cover image is required" })}
           />
           {errors.coverImg && (
@@ -143,12 +142,12 @@ const Upload = () => {
 
         {/* Pitch Field */}
         <div className="w-full flex flex-col gap-2">
-          <label className="block text-sm font-medium text-zinc-800 mb-1">
+          <label className="block text-sm font-medium text-zinc-200 mb-1">
             Detailed Pitch
           </label>
           <Textarea
             placeholder="Enter Your Detailed Pitch"
-            className="h-40 border border-zinc-600 text-zinc-800"
+            className="h-12 border border-zinc-600 text-white placeholder:text-zinc-600"
             {...register("pitch", {
               required: "Pitch is required",
               minLength: {
@@ -168,7 +167,7 @@ const Upload = () => {
 
         <Button
           disabled={uploadingIdea}
-          className="w-full h-12 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-200"
+          className="w-full h-12 bg-white text-black rounded-md hover:bg-white/80 transition duration-200"
         >
           {uploadingIdea ? "wait . . ." : "Upload"}
         </Button>

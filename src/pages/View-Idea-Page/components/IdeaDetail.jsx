@@ -52,20 +52,20 @@ const IdeaDetail = ({ idea, id }) => {
             <img
               src={idea?.user.avatar}
               alt="User Avatar"
-              className="h-16 w-16 object-cover rounded-full border-2 border-gray-300 shadow-md"
+              className="h-16 w-16 object-cover rounded-full border-2 border-zinc-800 shadow-md"
             />
             <div>
-              <h1 className="text-2xl font-[Poppins] font-semibold text-black">
+              <h1 className="text-2xl font-[Poppins] font-semibold text-white">
                 {idea?.user?.username}
               </h1>
-              <p className="font-[Inter] text-sm text-gray-800">
+              <p className="font-[Inter] text-sm text-zinc-200">
                 {idea?.user?.email}
               </p>
             </div>
           </div>
         </Link>
         <div className="flex flex-col items-center gap-4">
-          <p className="font-[Inter] text-sm text-gray-600">{formatedDate}</p>
+          <p className="font-[Inter] text-sm text-zinc-200">{formatedDate}</p>
           <div className="flex items-center gap-2">
             <button>
               <Heart
@@ -83,10 +83,10 @@ const IdeaDetail = ({ idea, id }) => {
 
       {/* 🔹 Pitch Details */}
       <div className="w-full sm:w-[90%] lg:w-[60%] text-left flex flex-col gap-6 pb-8">
-        <h1 className="text-2xl font-[Poppins] font-semibold text-gray-800">
+        <h1 className="text-2xl font-[Poppins] font-semibold text-white">
           {idea?.name}
         </h1>
-        <Badge className="bg-blue-600">{idea?.category}</Badge>
+        <Badge className="bg-white/10 text-white">{idea?.category}</Badge>
         <DetailRow title="Description" content={idea?.description} />
         <DetailRow title="Pitch" content={idea?.pitch} />
       </div>
@@ -97,8 +97,8 @@ const IdeaDetail = ({ idea, id }) => {
 // 🔹 Reusable Component for Pitch Details
 const DetailRow = ({ title, content }) => (
   <>
-    <p className="font-[Inter] text-lg text-gray-800 leading-relaxed break-words text-wrap">
-      <span className="text-black font-semibold">{title} : </span> {content}
+    <p className="font-[Inter] text-lg text-zinc-200 leading-relaxed break-words text-wrap">
+      <span className="text-white font-semibold">{title} : </span> {content}
     </p>
   </>
 );

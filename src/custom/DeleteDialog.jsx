@@ -12,34 +12,52 @@ import { IdeaStore } from "@/store/useIdeaStore";
 const DeleteDialog = ({ id }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { deleteIdea, deleting } = IdeaStore();
+
   const handleDelete = () => {
     try {
       deleteIdea(id);
       setIsOpen(false);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
+
   return (
     <>
-      {/* Button to Open Dialog */}
+      {/* Trigger Button */}
       <Button variant="destructive" onClick={() => setIsOpen(true)}>
         Delete
       </Button>
 
-      {/* Delete Confirmation Dialog */}
+      {/* Confirmation Dialog */}
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent>
+        <DialogContent
+          className="bg-zinc-900 text-white border border-zinc-700"
+          onInteractOutside={(e) => e.preventDefault()}
+          onEscapeKeyDown={(e) => e.preventDefault()}
+        >
           <DialogHeader>
-            <DialogTitle>Confirm Delete</DialogTitle>
+            <DialogTitle className="text-white">Confirm Delete</DialogTitle>
           </DialogHeader>
-          <p>Are you sure you want to delete this?</p>
+
+          <p className="text-sm text-zinc-300">
+            Are you sure you want to delete this?
+          </p>
+
           <DialogFooter>
-            <Button variant="secondary" onClick={() => setIsOpen(false)}>
+            <Button
+              variant="secondary"
+              className="bg-zinc-700 hover:bg-zinc-600 text-white"
+              onClick={() => setIsOpen(false)}
+            >
               Close
             </Button>
-            <Button variant="destructive" onClick={handleDelete}>
-              Delete
+            <Button
+              variant="destructive"
+              onClick={handleDelete}
+              disabled={deleting}
+            >
+              {deleting ? "Deleting..." : "Delete"}
             </Button>
           </DialogFooter>
         </DialogContent>

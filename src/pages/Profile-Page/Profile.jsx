@@ -23,7 +23,7 @@ const Profile = () => {
   }
 
   return (
-    <div className="w-full h-auto flex flex-col items-center mt-28 px-4">
+    <div className="w-full min-h-screen flex flex-col items-center pt-24 px-4">
       <ProfileCard user={user} logout={logout} />
       <YourIdeas ideas={loggedInUserIdeas} />
     </div>

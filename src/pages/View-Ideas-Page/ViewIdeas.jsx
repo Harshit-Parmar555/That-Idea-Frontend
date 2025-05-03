@@ -5,7 +5,8 @@ import Container from "./components/Container";
 
 const ViewIdeas = () => {
   return (
-    <div className="w-full h-auto flex flex-col items-center mt-28">
+    <div className="w-full min-h-dvh bg-[#090909] flex flex-col items-center pt-24">
+      
       <Container />
     </div>
   );

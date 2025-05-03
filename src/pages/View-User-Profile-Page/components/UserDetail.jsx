@@ -10,20 +10,20 @@ const UserDetail = ({ user }) => {
           <img
             src={user?.avatar}
             alt="User Avatar"
-            className="h-16 w-16 object-cover rounded-full border-2 border-gray-300 shadow-md "
+            className="h-16 w-16 object-cover rounded-full border-2 border-zinc-800 shadow-md "
           />
           <div>
-            <h1 className="text-2xl font-[Poppins] font-semibold text-black">
+            <h1 className="text-2xl font-[Poppins] font-semibold text-white">
               {user?.username}
             </h1>
-            <p className="font-[Inter] text-sm text-gray-800">{user?.email}</p>
+            <p className="font-[Inter] text-sm text-zinc-200">{user?.email}</p>
           </div>
         </div>
         <div className="flex flex-col items-center gap-4">
-          <p className="font-[Inter] text-sm text-gray-600">
+          <p className="font-[Inter] text-sm text-zinc-200">
             Joined on : {formatedDate}
           </p>
-          <p className="font-[Inter] text-sm text-gray-600">
+          <p className="font-[Inter] text-sm text-zinc-200">
             Total Ideas : {user?.ideas.length}
           </p>
         </div>
