@@ -19,7 +19,6 @@ const IdeaDetail = ({ idea, id }) => {
       return toast.error("Please login first!");
     }
 
-    // 🔵 1. Optimistic UI update first
     setLikes((prevLikes) => {
       const updatedLikes = prevLikes.includes(user?._id)
         ? prevLikes.filter((likeId) => likeId !== user?._id)
@@ -28,7 +27,6 @@ const IdeaDetail = ({ idea, id }) => {
     });
 
     try {
-      // 🔵 2. Then call API
       await likeIdea(id);
     } catch (error) {
       // 🔵 3. If API fails, rollback the UI

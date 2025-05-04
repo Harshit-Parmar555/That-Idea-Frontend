@@ -4,21 +4,23 @@ import { Toaster } from "react-hot-toast";
 import { Navigate } from "react-router-dom";
 
 // Pages import
-import Land from "./pages/Land-Page/Land";
-import ViewIdeas from "./pages/View-Ideas-Page/ViewIdeas";
-import ViewIdea from "./pages/View-Idea-Page/ViewIdea";
-import Profile from "./pages/Profile-Page/Profile";
-import ViewUserProfile from "./pages/View-User-Profile-Page/ViewUserProfile";
-import Upload from "./pages/Upload-Page/Upload";
-import NotFound from "./pages/Not-Found-Page/NotFound";
+import Land from "./pages/Land/Land";
+import ViewIdeas from "./pages/Home/ViewIdeas";
+import ViewIdea from "./pages/Idea/ViewIdea";
+import Profile from "./pages/Profile/Profile";
+import ViewUserProfile from "./pages/User-Profile/ViewUserProfile";
+import Upload from "./pages/Upload/Upload";
+import NotFound from "./pages/404/NotFound";
 import Layout from "./Layout";
 
-import Spinner from "./custom/Spinner";
+// Store import
 import { AuthStore } from "./store/useAuthStore.js";
+
+import Spinner from "./custom/Spinner";
 
 // Protected route
 const ProtectedRoute = ({ children }) => {
-  const { isAuthenticated, user } = AuthStore();
+  const { isAuthenticated } = AuthStore();
   if (!isAuthenticated) {
     return <Navigate to="/view-ideas" replace />;
   }
@@ -49,24 +51,23 @@ const App = () => {
       <Toaster
         position="top-center"
         toastOptions={{
-          // Global styles for all toasts
           style: {
-            background: "#111", // Matches your dark theme
+            background: "#111",
             color: "#fff",
             border: "1px solid #333",
             fontFamily: "Inter, sans-serif",
-            fontSize: "0.875rem", // equivalent to text-sm
+            fontSize: "0.875rem",
             padding: "12px 16px",
           },
           success: {
             iconTheme: {
-              primary: "#4ade80", // green-400
+              primary: "#4ade80",
               secondary: "#000",
             },
           },
           error: {
             iconTheme: {
-              primary: "#f87171", // red-400
+              primary: "#f87171",
               secondary: "#000",
             },
           },

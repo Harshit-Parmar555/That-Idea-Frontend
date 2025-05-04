@@ -1,8 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
+// components
 import { Button } from "@/components/ui/button";
+
+// assets
 import { FaGithub } from "react-icons/fa";
 import { ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+
 
 const Land = () => {
   return (
