@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AuthStore } from "@/store/useAuthStore";
 import { formatDate } from "@/utils/date";
 import { Link } from "react-router-dom";
-import { Heart } from "lucide-react";
+import { Heart, Share } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import toast from "react-hot-toast";
 import { IdeaStore } from "@/store/useIdeaStore";
@@ -80,17 +80,28 @@ const IdeaDetail = ({ idea, id }) => {
         <DetailRow title="Pitch" content={idea?.pitch} />
       </div>
       <div className="w-full sm:w-[90%] lg:w-[60%] flex items-center justify-between gap-4 pb-8">
-        <div className="flex gap-2">
-          <button>
-            <Heart
-              onClick={handleLike}
-              className={clsx(
-                "w-6 h-6 transition-all duration-200 stroke-red-600 hover:scale-125",
-                likes?.includes(user?._id) && "fill-red-600"
-              )}
-            />
-          </button>
-          <p className="text-zinc-400">{likes?.length}</p>
+        <div className="flex gap-8 items-center">
+          {/* Like Button */}
+          <div className="flex items-center gap-1">
+            <button onClick={handleLike}>
+              <Heart
+                className={clsx(
+                  "w-6 h-6 transition-all duration-200 stroke-red-600 hover:scale-125",
+                  likes?.includes(user?._id) && "fill-red-600"
+                )}
+              />
+            </button>
+            <p className="text-zinc-400">{likes?.length}</p>
+          </div>
+
+          {/* Share Button */}
+          <Share
+            onClick={() => {
+              navigator.clipboard.writeText(window.location.href);
+              toast.success("Link copied to clipboard!");
+            }}
+            className="text-sm text-zinc-300 hover:text-white transition-all"
+          />
         </div>
       </div>
     </div>
