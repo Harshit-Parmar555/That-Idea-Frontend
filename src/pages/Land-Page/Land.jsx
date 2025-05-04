@@ -32,9 +32,9 @@ const Land = () => {
           into Reality
         </h1>
 
-        <p className="w-full md:w-2xl text-md md:text-lg text-zinc-400 font-[Inter]">
-          "Share your ideas, get feedback, and connect with like-minded
-          thinkers. Join a community where ideas become reality!"
+        <p className="w-full md:w-2xl text-sm md:text-lg text-zinc-400 font-[Inter]">
+          Want a platform where you can discover and share startup ideas daily?
+          Welcome to That-Idea — where innovation meets community.
         </p>
 
         <div className="flex gap-4 md:gap-8">

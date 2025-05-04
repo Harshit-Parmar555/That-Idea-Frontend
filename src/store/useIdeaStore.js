@@ -17,13 +17,17 @@ export const IdeaStore = create((set, get) => ({
   searching: false,
 
   // Load ideas
-  loadIdeas: async () => {
+  loadIdeas: async (sort = "") => {
     try {
       set({ loadingIdeas: true });
-      const response = await axiosInstance.get("/ideas/getIdeas");
+
+      const response = await axiosInstance.get(
+        `/ideas/getIdeas?sortBy=${sort}`
+      );
+
       set({ Ideas: response.data.Ideas });
     } catch (error) {
-      toast.error(error.response.data.message);
+      toast.error(error?.response?.data?.message || "Failed to load ideas");
     } finally {
       set({ loadingIdeas: false });
     }
@@ -89,7 +93,7 @@ export const IdeaStore = create((set, get) => ({
     try {
       const response = await axiosInstance.put(`/ideas/toggleIdeaLike/${id}`);
     } catch (error) {
-      console.log(error)
+      console.log(error);
       toast.error(error.response.data.message);
     }
   },
@@ -112,15 +116,18 @@ export const IdeaStore = create((set, get) => ({
   },
 
   // Search ideas
-  searchIdeas: async (query) => {
+  searchIdeas: async (query, sortBy = "") => {
     try {
       set({ searching: true });
-      const response = await axiosInstance.get(
-        `/ideas/searchIdea?query=${query}`
-      );
+
+      // Build URL with optional sortBy param
+      let url = `/ideas/searchIdea?query=${encodeURIComponent(query)}`;
+      if (sortBy) url += `&sortBy=${sortBy}`;
+
+      const response = await axiosInstance.get(url);
       set({ Ideas: response.data.results });
     } catch (error) {
-      toast.error(error.response.data.message);
+      toast.error(error?.response?.data?.message || "Something went wrong");
     } finally {
       set({ searching: false });
     }
